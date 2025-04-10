@@ -61,7 +61,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.anemoessa.advinttopics2025_athasangelos.ui.theme.ADVINTTOPICS2025_athasangelosTheme
-import com.anemoessa.advinttopics2025_athasangelos.ui.theme.components.MyNavigationDrawer
+import com.anemoessa.advinttopics2025_athasangelos.components.MyNavigationDrawer
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() { //RUNNABLE

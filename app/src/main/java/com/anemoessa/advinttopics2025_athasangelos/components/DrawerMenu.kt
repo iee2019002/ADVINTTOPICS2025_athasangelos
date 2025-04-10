@@ -1,4 +1,4 @@
-package com.anemoessa.advinttopics2025_athasangelos.ui.theme.components
+package com.anemoessa.advinttopics2025_athasangelos.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,6 +31,8 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -103,9 +105,11 @@ fun MyNavigationDrawer(navController: NavHostController) {
                         IconButton(onClick = { scope.launch { drawerState.open() } }) {
                             Icon(Icons.Default.Menu, contentDescription = "Menu")
                         }
-                    }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF6200EE))
                 )
-            }
+            },
+            containerColor = MaterialTheme.colorScheme.background
         ) { innerPadding ->
             Box(modifier = Modifier.padding(innerPadding)) {
                 NavHost(
