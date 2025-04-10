@@ -24,7 +24,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.extended.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -49,6 +48,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -56,174 +56,32 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.anemoessa.advinttopics2025_athasangelos.ui.theme.ADVINTTOPICS2025_athasangelosTheme
+import com.anemoessa.advinttopics2025_athasangelos.ui.theme.components.MyNavigationDrawer
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() { //RUNNABLE
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            GreetingPreview()
-            /*val navController = rememberNavController()
-            MyAppNavHost(navController)*/
+            ADVINTTOPICS2025_athasangelosTheme {
+                AppPreview()
+            }
         }
     }
 }
 
-/*@Composable
-fun MyAppNavHost(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") {
-            //HomeScreen(navController)
-        }
-        composable("calculator") {
-            //DestinationScreen()
-        }
-    }
-}*/
-
 @Preview(showBackground = true)//PREVIEW
 @Composable
-fun GreetingPreview() {
+fun AppPreview() {
     val navController = rememberNavController()
     MyNavigationDrawer(navController)
 }
 
-@Composable
-fun DrawerHeader() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(120.dp)
-            .background(MaterialTheme.colorScheme.primary)
-            .padding(16.dp)
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(
-                painter = painterResource(id = R.drawable.pfp), // <- Put a real image here
-                contentDescription = "Profile Picture",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(64.dp)
-                    .clip(CircleShape)
-                    .border(2.dp, Color.White, CircleShape)
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column {
-                Text(
-                    text = "Pliroforiako Systima",
-                    style = MaterialTheme.typography.titleMedium,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "Sto opoio den exo idea ti thema tha valo",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = Color.White
-                )
-            }
-        }
-    }
-}
-
-
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyNavigationDrawer(navController: NavHostController) {
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val scope = rememberCoroutineScope()
-
-    fun navigateAndCloseDrawer(destination: String) {
-        scope.launch {
-            drawerState.close()
-            navController.navigate(destination)
-        }
-    }
-
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        drawerContent = {
-            ModalDrawerSheet {
-                DrawerHeader() // Add your header here
-                HorizontalDivider()
-                Box(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .clickable {
-                            navController.navigate("home")
-                            navigateAndCloseDrawer("home")
-                        }
-                        //.then(Modifier.ripple()),
-                ){
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        IconButton(onClick = {
-                            navController.navigate("home")
-                        }) {
-                            Icon(imageVector = Icons.Filled.Home, contentDescription = "Home")
-                        }
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = "Home Screen",
-                            modifier = Modifier.padding(8.dp)
-                        )
-                    }
-                }
-                HorizontalDivider()
-                Box(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .clickable {
-                            navController.navigate("calculator")
-                            navigateAndCloseDrawer("calculator")
-                        }
-                    //.then(Modifier.ripple()),
-                ){
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        IconButton(onClick = {
-                            navController.navigate("calculator")
-                        }) {
-                            Icon(imageVector = Icons.Filled.Calculate, contentDescription = "Calc")
-                        }
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Calculator",
-                            modifier = Modifier.padding(8.dp)
-                        )
-                    }
-                }
-                HorizontalDivider()
-            }
-        }
-    ) {
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = { Text("LMAO") },
-                    navigationIcon = {
-                        IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                            Icon(Icons.Default.Menu, contentDescription = "Menu")
-                        }
-                    }
-                )
-            }
-        ) { innerPadding ->
-            Box(modifier = Modifier.padding(innerPadding)) {
-                NavHost(
-                    navController = navController,
-                    startDestination = "home"
-                ) {
-                    composable("home") { HomeScreen() }
-                    composable("calculator") { CalculatorUI() }
-                }
-            }
-        }
-    }
-}
 
 @Composable
 fun HomeScreen(){
