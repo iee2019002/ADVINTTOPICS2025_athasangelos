@@ -155,24 +155,18 @@ fun MyNavigationDrawer(navController: NavHostController) {
                     modifier = Modifier
                         .padding(8.dp)
                         .clickable {
-                            // This will navigate to another screen
                             navController.navigate("home")
                             navigateAndCloseDrawer("home")
                         }
                         //.then(Modifier.ripple()),
                 ){
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        // Home Icon
                         IconButton(onClick = {
                             navController.navigate("home")
                         }) {
                             Icon(imageVector = Icons.Filled.Home, contentDescription = "Home")
                         }
-
-                        // Spacer between icon and text
-                        Spacer(modifier = Modifier.width(8.dp))
-
-                        // Text for Home Screen
+                        Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             text = "Home Screen",
                             modifier = Modifier.padding(8.dp)
@@ -184,28 +178,24 @@ fun MyNavigationDrawer(navController: NavHostController) {
                     modifier = Modifier
                         .padding(8.dp)
                         .clickable {
-                            // This will navigate to another screen
                             navController.navigate("calculator")
                             navigateAndCloseDrawer("calculator")
                         }
                     //.then(Modifier.ripple()),
-                ){Row(verticalAlignment = Alignment.CenterVertically) {
-                    // Home Icon
-                    IconButton(onClick = {
-                        navController.navigate("calculator")
-                    }) {
-                        Icon(imageVector = Icons.Filled.Calculate, contentDescription = "Calc")
+                ){
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        IconButton(onClick = {
+                            navController.navigate("calculator")
+                        }) {
+                            Icon(imageVector = Icons.Filled.Calculate, contentDescription = "Calc")
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Calculator",
+                            modifier = Modifier.padding(8.dp)
+                        )
                     }
-
-                    // Spacer between icon and text
-                    Spacer(modifier = Modifier.width(8.dp))
-
-                    // Text for Home Screen
-                    Text(
-                        text = "Calculator",
-                        modifier = Modifier.padding(8.dp)
-                    )
-                }}
+                }
                 HorizontalDivider()
             }
         }
