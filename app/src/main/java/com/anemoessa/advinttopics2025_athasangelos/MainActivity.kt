@@ -68,13 +68,13 @@ class MainActivity : ComponentActivity() { //RUNNABLE
         super.onCreate(savedInstanceState)
         setContent {
             GreetingPreview()
-            val navController = rememberNavController()
-            MyAppNavHost(navController)
+            /*val navController = rememberNavController()
+            MyAppNavHost(navController)*/
         }
     }
 }
 
-@Composable
+/*@Composable
 fun MyAppNavHost(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "home") {
         composable("home") {
@@ -84,7 +84,7 @@ fun MyAppNavHost(navController: NavHostController) {
             //DestinationScreen()
         }
     }
-}
+}*/
 
 @Preview(showBackground = true)//PREVIEW
 @Composable
@@ -130,11 +130,20 @@ fun DrawerHeader() {
     }
 }
 
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyNavigationDrawer(navController: NavController) {
+fun MyNavigationDrawer(navController: NavHostController) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+
+    fun navigateAndCloseDrawer(destination: String) {
+        scope.launch {
+            drawerState.close()
+            navController.navigate(destination)
+        }
+    }
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -147,7 +156,8 @@ fun MyNavigationDrawer(navController: NavController) {
                         .padding(8.dp)
                         .clickable {
                             // This will navigate to another screen
-                            navController.navigate("calculator")
+                            navController.navigate("home")
+                            navigateAndCloseDrawer("home")
                         }
                         //.then(Modifier.ripple()),
                 ){
@@ -175,7 +185,8 @@ fun MyNavigationDrawer(navController: NavController) {
                         .padding(8.dp)
                         .clickable {
                             // This will navigate to another screen
-                            navController.navigate("home")
+                            navController.navigate("calculator")
+                            navigateAndCloseDrawer("calculator")
                         }
                     //.then(Modifier.ripple()),
                 ){Row(verticalAlignment = Alignment.CenterVertically) {
@@ -212,10 +223,21 @@ fun MyNavigationDrawer(navController: NavController) {
             }
         ) { innerPadding ->
             Box(modifier = Modifier.padding(innerPadding)) {
-                Text("Main Content Goes Here", modifier = Modifier.padding(16.dp))
+                NavHost(
+                    navController = navController,
+                    startDestination = "home"
+                ) {
+                    composable("home") { HomeScreen() }
+                    composable("calculator") { CalculatorUI() }
+                }
             }
         }
     }
+}
+
+@Composable
+fun HomeScreen(){
+
 }
 
 @Composable
