@@ -104,7 +104,7 @@ fun MyNavigationDrawer(navController: NavHostController) {
                             Icon(Icons.Default.Menu, contentDescription = "Menu")
                         }
                     },
-                    colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF6200EE),
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primary,
                         titleContentColor = Color.White,    // Title text color
                         navigationIconContentColor = Color.White, // Menu icon color
                         actionIconContentColor = Color.White)
