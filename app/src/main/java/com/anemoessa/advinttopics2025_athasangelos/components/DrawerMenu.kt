@@ -15,9 +15,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBalanceWallet
+import androidx.compose.material.icons.filled.BackHand
+import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -72,9 +77,21 @@ fun DrawerPreviewDraft() {
             HorizontalDivider()
 
             DrawerItem(
-                icon = Icons.Filled.Calculate,
-                text = "Calculator",
-                onClick = {/* navigateAndCloseDrawer("calculator")*/ }
+                icon = Icons.Filled.Person,
+                text = "Users",
+                onClick = {/* navigateAndCloseDrawer("users")*/ }
+            )
+            HorizontalDivider()
+            DrawerItem(
+                icon = Icons.Filled.Book,
+                text = "Books",
+                onClick = {/* navigateAndCloseDrawer("books")*/ }
+            )
+            HorizontalDivider()
+            DrawerItem(
+                icon = Icons.Filled.MenuBook,
+                text = "Book Loans",
+                onClick = {/* navigateAndCloseDrawer("loans")*/ }
             )
             HorizontalDivider()
         }
@@ -121,7 +138,9 @@ fun MyNavigationDrawer(navController: NavHostController) {
                     startDestination = "home"
                 ) {
                     composable("home") { HomeScreen() }
-                    composable("calculator") { CalculatorUI() }
+                    composable("users") { HomeScreen() }
+                    composable("books") { HomeScreen() }
+                    composable("loans") { HomeScreen() }
                 }
             }
         }
@@ -150,13 +169,13 @@ fun DrawerHeader() {
             Spacer(modifier = Modifier.width(16.dp))
             Column {
                 Text(
-                    text = "Pliroforiako Systima",
+                    text = "Anemoessa",
                     style = MaterialTheme.typography.titleMedium,
                     color = Color.White,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "Sto opoio den exo idea ti thema tha valo",
+                    text = "Borrow a Book",
                     style = MaterialTheme.typography.bodySmall,
                     color = Color.White
                 )
@@ -177,25 +196,34 @@ fun DrawerMenuContent(navController: NavHostController, drawerState: DrawerState
     }
 
     ModalDrawerSheet {
-        DrawerHeader()  // Drawer Header
-
-        HorizontalDivider()  // Divider between sections
+        DrawerHeader()
+        HorizontalDivider()
 
         DrawerItem(
             icon = Icons.Filled.Home,
             text = "Home Screen",
-            onClick = { navigateAndCloseDrawer("home") }
+            onClick = { navigateAndCloseDrawer("home")}
         )
-
-        HorizontalDivider()  // Another Divider
+        HorizontalDivider()
 
         DrawerItem(
-            icon = Icons.Filled.Calculate,
-            text = "Calculator",
-            onClick = { navigateAndCloseDrawer("calculator")}
+            icon = Icons.Filled.Person,
+            text = "Users",
+            onClick = {navigateAndCloseDrawer("users")}
         )
-
-        HorizontalDivider()  // Another Divider
+        HorizontalDivider()
+        DrawerItem(
+            icon = Icons.Filled.Book,
+            text = "Books",
+            onClick = {navigateAndCloseDrawer("books")}
+        )
+        HorizontalDivider()
+        DrawerItem(
+            icon = Icons.Filled.MenuBook,
+            text = "Book Loans",
+            onClick = {navigateAndCloseDrawer("loans")}
+        )
+        HorizontalDivider()
     }
 }
 
