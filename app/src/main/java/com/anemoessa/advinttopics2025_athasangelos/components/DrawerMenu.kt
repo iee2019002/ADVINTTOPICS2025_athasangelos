@@ -118,7 +118,7 @@ fun MyNavigationDrawer(navController: NavHostController) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text("LMAO") },
+                    title = { Text("ANEMOESSA") },
                     navigationIcon = {
                         IconButton(onClick = { scope.launch { drawerState.open() } }) {
                             Icon(Icons.Default.Menu, contentDescription = "Menu")
@@ -138,7 +138,7 @@ fun MyNavigationDrawer(navController: NavHostController) {
                     startDestination = "home"
                 ) {
                     composable("home") { HomeScreen() }
-                    composable("users") { HomeScreen() }
+                    composable("users") { UsersScreen() }
                     composable("books") { HomeScreen() }
                     composable("loans") { HomeScreen() }
                 }
