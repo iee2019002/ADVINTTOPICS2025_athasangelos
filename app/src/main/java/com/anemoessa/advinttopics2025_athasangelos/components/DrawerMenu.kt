@@ -50,38 +50,41 @@ import androidx.navigation.compose.composable
 import com.anemoessa.advinttopics2025_athasangelos.CalculatorUI
 import com.anemoessa.advinttopics2025_athasangelos.HomeScreen
 import com.anemoessa.advinttopics2025_athasangelos.R
+import com.anemoessa.advinttopics2025_athasangelos.ui.theme.ADVINTTOPICS2025_athasangelosTheme
 import kotlinx.coroutines.launch
 
 @Preview(showBackground = true)//PREVIEW
 @Composable
-fun DrawerPreviewDraft(){
+fun DrawerPreviewDraft() {
+    ADVINTTOPICS2025_athasangelosTheme(darkTheme = true){
+        //PREVIEW USAGE ONLY FOR THE LIST (Copy-paste ModalDrawerSheet from DrawerMenuContent and comment
+        // onClick events)
 
-    //PREVIEW USAGE ONLY FOR THE LIST (Copy-paste ModalDrawerSheet form DrawerMenuContent and comment
-    // onClick events)
+        ModalDrawerSheet {
+            DrawerHeader()
+            HorizontalDivider()
 
-    ModalDrawerSheet {
-        DrawerHeader()
-        HorizontalDivider()
+            DrawerItem(
+                icon = Icons.Filled.Home,
+                text = "Home Screen",
+                onClick = { /*navigateAndCloseDrawer("home")*/ }
+            )
+            HorizontalDivider()
 
-        DrawerItem(
-            icon = Icons.Filled.Home,
-            text = "Home Screen",
-            onClick = { /*navigateAndCloseDrawer("home")*/ }
-        )
-        HorizontalDivider()
+            DrawerItem(
+                icon = Icons.Filled.Calculate,
+                text = "Calculator",
+                onClick = {/* navigateAndCloseDrawer("calculator")*/ }
+            )
+            HorizontalDivider()
+        }
 
-        DrawerItem(
-            icon = Icons.Filled.Calculate,
-            text = "Calculator",
-            onClick = {/* navigateAndCloseDrawer("calculator")*/ }
-        )
-        HorizontalDivider()
+        //PREVIEW USAGE FOR THE ITEM
+
+        //DrawerItem(Icons.Filled.HdrAuto, "Drawer Item", {})
     }
-
-    //PREVIEW USAGE FOR THE ITEM
-
-    //DrawerItem(Icons.Filled.HdrAuto, "Drawer Item", {})
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
