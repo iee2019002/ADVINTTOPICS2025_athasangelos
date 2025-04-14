@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "98952568104",
+    "project_id": "advinttopics2025",
+    "storage_bucket": "advinttopics2025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98952568104:android:e64cbffff477a447aa441d",
+        "android_client_info": {
+          "package_name": "com.anemoessa.advinttopics2025_athasangelos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtPRKAI4XfguOOAlQUL1mMaRtXtwWGUJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
