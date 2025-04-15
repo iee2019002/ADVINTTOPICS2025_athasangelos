@@ -45,7 +45,7 @@ fun UsersScreen() {
     Column(modifier = Modifier
         .fillMaxSize()
         .verticalScroll(rememberScrollState())) {
-        UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
+        /*UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
         UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
         UserRow("2019003", "Jane Smith", "Professor", null)
         UserRow("2019004", "Mike Johnson", "Professor", null)
@@ -60,7 +60,7 @@ fun UsersScreen() {
         UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
         UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
         UserRow("2019003", "Jane Smith", "Professor", null)
-        UserRow("2019004", "Mike Johnson", "Professor", null)
+        UserRow("2019004", "Mike Johnson", "Professor", null)*/
         // Add as many users as needed
     }
 }
