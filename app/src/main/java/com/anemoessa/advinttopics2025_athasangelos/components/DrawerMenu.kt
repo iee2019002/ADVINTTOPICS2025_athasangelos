@@ -134,7 +134,7 @@ fun MyNavigationDrawer(navController: NavHostController) {
                     startDestination = "home"
                 ) {
                     composable("home") { HomeScreen() }
-                    composable("users") { UsersQuery() }
+                    composable("users") { HomeScreen() }
                     composable("books") { HomeScreen() }
                     composable("loans") { HomeScreen() }
                 }

@@ -33,8 +33,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.anemoessa.advinttopics2025_athasangelos.R
-import com.anemoessa.advinttopics2025_athasangelos.data.database.MyDatabase
-import com.anemoessa.advinttopics2025_athasangelos.data.entities.User
 import com.anemoessa.advinttopics2025_athasangelos.ui.theme.ADVINTTOPICS2025_athasangelosTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOf
@@ -45,56 +43,9 @@ import kotlinx.coroutines.withContext
 @Composable
 fun DraftPreview() {
     ADVINTTOPICS2025_athasangelosTheme{
-        UsersQuery()
+        UserRow(2019002, "aggelos", "foititis", R.drawable.pfp)
     }
 }
-
-
-
-
-/*@Composable
-fun UsersQuery() {
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .verticalScroll(rememberScrollState())) {
-        UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
-        UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
-        UserRow("2019003", "Jane Smith", "Professor", null)
-        UserRow("2019004", "Mike Johnson", "Professor", null)
-        // Add more users as needed
-    }
-}*/
-
-@Composable
-fun UsersQuery() {
-    val context = LocalContext.current
-    var users by remember { mutableStateOf<List<User>>(emptyList()) }
-    LaunchedEffect(Unit) {
-        val db = MyDatabase.getInstance(context)
-        db.usersDao().getAllUsers().collect { userList ->
-            users = userList
-        }
-    }
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(12.dp)
-    ) {
-        users.forEach { user ->
-            UserRow(
-                uid = user.userId,
-                username = user.name,
-                usertype = user.type,
-                picdir = user.profileImageRes
-            )
-        }
-    }
-}
-
-
-
-
 
 @Composable
 fun UserRow(uid: Int, username: String, usertype: String, picdir: Int?) {
