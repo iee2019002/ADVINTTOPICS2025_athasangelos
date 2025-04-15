@@ -15,10 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBalanceWallet
-import androidx.compose.material.icons.filled.BackHand
 import androidx.compose.material.icons.filled.Book
-import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MenuBook
@@ -52,7 +49,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.anemoessa.advinttopics2025_athasangelos.CalculatorUI
 import com.anemoessa.advinttopics2025_athasangelos.HomeScreen
 import com.anemoessa.advinttopics2025_athasangelos.R
 import com.anemoessa.advinttopics2025_athasangelos.ui.theme.ADVINTTOPICS2025_athasangelosTheme
@@ -138,7 +134,7 @@ fun MyNavigationDrawer(navController: NavHostController) {
                     startDestination = "home"
                 ) {
                     composable("home") { HomeScreen() }
-                    composable("users") { UsersScreen() }
+                    composable("users") { UsersTab() }
                     composable("books") { HomeScreen() }
                     composable("loans") { HomeScreen() }
                 }

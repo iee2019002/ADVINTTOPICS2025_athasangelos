@@ -1,4 +1,4 @@
-package com.anemoessa.advinttopics2025_athasangelos.data.local.entities
+package com.anemoessa.advinttopics2025_athasangelos.data.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

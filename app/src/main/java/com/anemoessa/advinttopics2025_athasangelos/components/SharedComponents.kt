@@ -2,6 +2,7 @@ package com.anemoessa.advinttopics2025_athasangelos.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,12 +11,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,46 +29,63 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberAsyncImagePainter
 import com.anemoessa.advinttopics2025_athasangelos.R
 import com.anemoessa.advinttopics2025_athasangelos.ui.theme.ADVINTTOPICS2025_athasangelosTheme
-import com.google.firebase.firestore.auth.User
 
 @Preview(showBackground = true)//PREVIEW
 @Composable
 fun DraftPreview() {
     ADVINTTOPICS2025_athasangelosTheme{
-        UsersScreen()
+        UsersTab()
     }
 }
 
 @Composable
-fun UsersScreen() {
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .verticalScroll(rememberScrollState())) {
-        /*UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
-        UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
-        UserRow("2019003", "Jane Smith", "Professor", null)
-        UserRow("2019004", "Mike Johnson", "Professor", null)
-        UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
-        UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
-        UserRow("2019003", "Jane Smith", "Professor", null)
-        UserRow("2019004", "Mike Johnson", "Professor", null)
-        UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
-        UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
-        UserRow("2019003", "Jane Smith", "Professor", null)
-        UserRow("2019004", "Mike Johnson", "Professor", null)
-        UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
-        UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
-        UserRow("2019003", "Jane Smith", "Professor", null)
-        UserRow("2019004", "Mike Johnson", "Professor", null)*/
-        // Add as many users as needed
+fun UsersTab() {
+    Box(modifier = Modifier.fillMaxSize()) {
+        UsersQuery()
+
+        FloatingActionButton(
+            onClick = { /* TODO: Trigger Add User Dialog or Navigation */ },
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(16.dp),
+            containerColor = MaterialTheme.colorScheme.primary
+        ) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = "Add User",
+                tint = Color.White
+            )
+        }
     }
 }
 
 
-
+@Composable
+fun UsersQuery() {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .verticalScroll(rememberScrollState())) {
+        UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
+        UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
+        UserRow("2019003", "Jane Smith", "Professor", null)
+        UserRow("2019004", "Mike Johnson", "Professor", null)
+        UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
+        UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
+        UserRow("2019003", "Jane Smith", "Professor", null)
+        UserRow("2019004", "Mike Johnson", "Professor", null)
+        UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
+        UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
+        UserRow("2019003", "Jane Smith", "Professor", null)
+        UserRow("2019004", "Mike Johnson", "Professor", null)
+        UserRow("2019001", "John Doe", "Student", R.drawable.pfp)
+        UserRow("2019002", "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
+        UserRow("2019003", "Jane Smith", "Professor", null)
+        UserRow("2019004", "Mike Johnson", "Professor", null)
+        // Add as many users as needed
+    }
+}
 
 @Composable
 fun UserRow(
@@ -106,8 +125,3 @@ fun UserRow(
         }
     }
 }
-
-
-
-
-

@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() { //RUNNABLE
 @Preview(showBackground = true)//PREVIEW
 @Composable
 fun AppPreview() {
-    ADVINTTOPICS2025_athasangelosTheme (darkTheme = true) {
+    ADVINTTOPICS2025_athasangelosTheme /*(darkTheme = true)*/ {
         val navController = rememberNavController()
         MyNavigationDrawer(navController)
     }
