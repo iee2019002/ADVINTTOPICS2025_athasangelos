@@ -26,16 +26,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.anemoessa.advinttopics2025_athasangelos.components.MyNavigationDrawer
 import com.anemoessa.advinttopics2025_athasangelos.ui.theme.ADVINTTOPICS2025_athasangelosTheme
 
-class MainActivity : ComponentActivity() { //RUNNABLE
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ADVINTTOPICS2025_athasangelosTheme {
-                AppPreview()
+                val navController = rememberNavController()
+                MyNavigationDrawer(navController)
             }
         }
     }
