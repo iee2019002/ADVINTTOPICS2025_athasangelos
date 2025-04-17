@@ -57,7 +57,7 @@ import kotlinx.coroutines.launch
 @Preview(showBackground = true)//PREVIEW
 @Composable
 fun DrawerPreviewDraft() {
-    ADVINTTOPICS2025_athasangelosTheme(darkTheme = true){
+    ADVINTTOPICS2025_athasangelosTheme{
         //PREVIEW USAGE ONLY FOR THE LIST (Copy-paste ModalDrawerSheet from DrawerMenuContent and comment
         // onClick events)
 
@@ -134,7 +134,7 @@ fun MyNavigationDrawer(navController: NavHostController) {
                     startDestination = "home"
                 ) {
                     composable("home") { HomeScreen() }
-                    composable("users") { HomeScreen() }
+                    composable("users") { UsersTab() }
                     composable("books") { HomeScreen() }
                     composable("loans") { HomeScreen() }
                 }

@@ -1,7 +1,7 @@
 package com.anemoessa.advinttopics2025_athasangelos.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,38 +14,89 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.anemoessa.advinttopics2025_athasangelos.R
 import com.anemoessa.advinttopics2025_athasangelos.ui.theme.ADVINTTOPICS2025_athasangelosTheme
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.forEach
-import kotlinx.coroutines.withContext
 
 @Preview(showBackground = true)//PREVIEW
 @Composable
 fun DraftPreview() {
-    ADVINTTOPICS2025_athasangelosTheme{
-        UserRow(2019002, "aggelos", "foititis", R.drawable.pfp)
+    ADVINTTOPICS2025_athasangelosTheme /*(darkTheme = true)*/{
+        //UserRow(2019002, "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
+        //UsersQuery()
+        UsersTab()
     }
 }
+
+@Composable
+fun UsersTab() {
+    Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { /* Add action later */ },
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = Color.White
+            ) {
+                Icon(Icons.Default.Add, contentDescription = "Add User")
+            }
+        },
+        floatingActionButtonPosition = FabPosition.End
+    ) { paddingValues ->
+        Box(modifier = Modifier
+            .padding(paddingValues)
+            .fillMaxSize()
+        ) {
+            UsersQueryNoDB()
+        }
+    }
+}
+
+
+@Composable
+fun UsersQueryNoDB() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp)
+    ) {
+        UserRow(2019002, "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
+        UserRow(2019003, "Παπαδόπουλος Νίκος", "Καθηγητής", R.drawable.pfp)
+        UserRow(2019004, "Ελένη Μαρκοπούλου", "Γραμματεία", R.drawable.pfp)
+        UserRow(2019005, "Γιώργος Αντωνίου", "Φοιτητής", R.drawable.pfp)
+        UserRow(2019006, "Μαρία Παναγιωτοπούλου", "Γραμματεία", R.drawable.pfp)
+        UserRow(2019002, "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
+        UserRow(2019003, "Παπαδόπουλος Νίκος", "Καθηγητής", R.drawable.pfp)
+        UserRow(2019004, "Ελένη Μαρκοπούλου", "Γραμματεία", R.drawable.pfp)
+        UserRow(2019005, "Γιώργος Αντωνίου", "Φοιτητής", R.drawable.pfp)
+        UserRow(2019006, "Μαρία Παναγιωτοπούλου", "Γραμματεία", R.drawable.pfp)
+        UserRow(2019002, "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
+        UserRow(2019003, "Παπαδόπουλος Νίκος", "Καθηγητής", R.drawable.pfp)
+        UserRow(2019004, "Ελένη Μαρκοπούλου", "Γραμματεία", R.drawable.pfp)
+        UserRow(2019005, "Γιώργος Αντωνίου", "Φοιτητής", R.drawable.pfp)
+        UserRow(2019006, "Μαρία Παναγιωτοπούλου", "Γραμματεία", R.drawable.pfp)
+        UserRow(2019002, "Αθανασίου Άγγελος", "Φοιτητής", R.drawable.pfp)
+        UserRow(2019003, "Παπαδόπουλος Νίκος", "Καθηγητής", R.drawable.pfp)
+        UserRow(2019004, "Ελένη Μαρκοπούλου", "Γραμματεία", R.drawable.pfp)
+        UserRow(2019005, "Γιώργος Αντωνίου", "Φοιτητής", R.drawable.pfp)
+        UserRow(2019006, "Μαρία Παναγιωτοπούλου", "Γραμματεία", R.drawable.pfp)
+    }
+}
+
 
 @Composable
 fun UserRow(uid: Int, username: String, usertype: String, picdir: Int?) {
