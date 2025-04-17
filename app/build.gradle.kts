@@ -71,8 +71,8 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
     // Room
-    implementation(libs.androidx.room.runtime.android)
-    implementation("androidx.room:room-ktx:2.6.1") // Optional but common for Kotlin support
+    //implementation(libs.androidx.room.runtime.android)
+    //implementation("androidx.room:room-ktx:2.6.1") // Optional but common for Kotlin support
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
