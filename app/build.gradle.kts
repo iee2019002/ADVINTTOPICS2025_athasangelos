@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
 }
 
@@ -47,6 +48,10 @@ android {
     }
 }
 
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -68,6 +73,9 @@ dependencies {
     // Room
     implementation(libs.androidx.room.runtime.android)
     implementation("androidx.room:room-ktx:2.6.1") // Optional but common for Kotlin support
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
     // Firebase
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
